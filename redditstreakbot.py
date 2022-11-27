@@ -39,4 +39,4 @@ for comment in subreddit.stream.comments(skip_existing=True):
         author = str(comment.author)
         totalComments = getComments(author)
         totalUpvotes = getUpvotes(author,totalComments)
-        comment.reply("Total comments: " + str(totalComments) + " " + "Total upvotes: " + str(totalUpvotes))
+        comment.reply("Total number of comments you made in the last 7 days: " + str(totalComments) + " " + "Total upvotes your comments received in the last 7 days: " + str(totalUpvotes))
