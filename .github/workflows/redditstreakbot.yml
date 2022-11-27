@@ -1,0 +1,29 @@
+name: Reddit Streak Bot
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setting up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          
+      - name: Create ENV file and run redditstreakbot
+        env:
+          REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
+          REDDIT_PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
+          API_SECRET: ${{ secrets.API_SECRET }}
+          API_CLIENT: ${{ secrets.API_CLIENT }}
+        run: |
+          pip install -r requirements.txt
+          python redditstreakbot.py
